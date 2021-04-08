@@ -12,51 +12,32 @@ class preprocessing(object):
     def scrapy_preprocess(self,data):
         self.disease_set = []
         self.symptom_set = []
+        self.disease_symptom = dict()
         for num, record in data.items():
+            index = 1
+            if record['diagnosis'] not in self.disease_symptom.keys():
+                self.disease_symptom[record['diagnosis']] = dict()
+                self.disease_symptom[record['diagnosis']]['index'] = index
+                self.disease_symptom[record['diagnosis']]['Symptom'] = dict()
+                index += 1
             self.disease_set.append(record['diagnosis'])
             for key,values in record['explicit_info'].items():
                 if key in ['Symptom','Medical_Examination']:
                     for value in values:
                         self.symptom_set.append(value)
+                        self.disease_symptom[record['diagnosis']]['Symptom'][value] = self.disease_symptom[record['diagnosis']]['Symptom'].get(value, 0) + 1
             for key,values in record['implicit_info'].items():
                 implicit_symptom_set = values.split(',')
                 for implicit_symptom in implicit_symptom_set:
                     if implicit_symptom != '':
-                        self.symptom_set.append(implicit_symptom[:-2:])
-        pass
+                        value = implicit_symptom[:-2:]
+                        self.symptom_set.append(value)
+                        self.disease_symptom[record['diagnosis']]['Symptom'][value] = self.disease_symptom[record['diagnosis']]['Symptom'].get(value, 0) + 1
+        
         self.disease_set = list(set(self.disease_set))
         self.symptom_set = list(set(self.symptom_set))
         pass
 
-    def create_goaltest(self, data, output_slot,train_rate=0.8,test_rate=0.2):
-        assert train_rate+test_rate==1
-        goal_test_store = list()
-        for num, record in data.items():
-            goal_test = dict()
-            goal_test['consult_id'] = num
-            goal_test['disease_tag'] = record['diagnosis']
-            goal_test['goal'] = dict()
-            goal_test['goal']['request_slots'] = {'disease':'UNK'}
-            goal_test['goal']['implicit_inform_slots'] = dict()
-            goal_test['goal']['explicit_inform_slots'] = dict()
-            for key,values in record['explicit_info'].items():
-                if key in ['Symptom','Medical_Examination']:
-                    for value in values:
-                        goal_test['goal']['explicit_inform_slots'][value] = True
-            for key,values in record['implicit_info'].items():
-                implicit_symptom_set = values.split(',')
-                for implicit_symptom in implicit_symptom_set:
-                    if implicit_symptom != '':
-                        goal_test['goal']['implicit_inform_slots'][implicit_symptom] = True
-            goal_test_store.append(goal_test)
-        random.shuffle(goal_test_store)
-        train_len=int(len(data)*train_rate)
-        goal = dict()
-        goal['train'] = goal_test_store[:train_len:]
-        goal['test'] = goal_test_store[train_len::]
-        pickle.dump(file=open(output_slot,'wb'),obj=goal)
-                
-            
 
     def disease_dumper(self,output_slot):
         
@@ -73,6 +54,10 @@ class preprocessing(object):
             slot_set[self.symptom_all[i]]=i
         pickle.dump(file=open(output_slot,'wb'),obj=slot_set)
         return slot_set
+    
+    def disease_symptom_dumper(self,output_slot):
+        pickle.dump(file=open(output_slot,'wb'),obj=self.disease_symptom)
+        return self.disease_symptom
 
     def train_test(self,n,train_rate=0.8,test_rate=0.2):
         '''
@@ -98,5 +83,5 @@ if __name__ == '__main__':
     preprocess.create_goaltest(data, output_slot='./resource/disease_set.p')
     disease_set=preprocess.disease_dumper(output_slot='./resource/disease_set.p')
     slot_set=preprocess.slot_dumper(output_slot='./resource/slot_set.p')
-    
+    disease_symptom=preprocess.slot_dumper(output_slot='./resource/disease_symptom.p')
     
