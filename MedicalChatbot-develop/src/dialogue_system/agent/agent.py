@@ -275,7 +275,7 @@ class Agent(object):
         max_turn = parameter.get('max_turn')
         temp_disease_symptom = copy.deepcopy(disease_symptom)
         for key, value in disease_symptom.items():
-            symptom_list = sorted(value['symptom'].items(),key = lambda x:x[1],reverse = True)
+            symptom_list = sorted(value['Symptom'].items(),key = lambda x:x[1],reverse = True)
             symptom_list = [v[0] for v in symptom_list]
             symptom_list = symptom_list[0:min(len(symptom_list), int(max_turn / 2.5))]
             temp_disease_symptom[key]['symptom'] = symptom_list

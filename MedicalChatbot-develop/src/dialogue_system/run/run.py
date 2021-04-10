@@ -21,11 +21,11 @@ import os
 
 
 
-disease_number = 4
+disease_number = 10
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--disease_number", dest="disease_number", type=int,default=disease_number,help="the number of disease.")
-parser.add_argument("--device_for_tf", dest="device_for_tf", type=str, default="/device:GPU:3", help="the device for tensorflow running on.")
+parser.add_argument("--device_for_tf", dest="device_for_tf", type=str, default="/device:GPU:0", help="the device for tensorflow running on.")
 
 # TODO: simulation configuration
 parser.add_argument("--simulate_epoch_number", dest="simulate_epoch_number", type=int, default=1500, help="the number of simulate epoch.")
@@ -80,12 +80,12 @@ if disease_number == 7:
     parser.add_argument("--disease_symptom", dest="disease_symptom", type=str,default="./../data/7_diseases/disease_symptom.p",help="path and filename of the disease_symptom file")
     parser.add_argument("--max_turn", dest="max_turn", type=int, default=26, help="the max turn in one episode.")
     parser.add_argument("--input_size_dqn", dest="input_size_dqn", type=int, default=325, help="the input_size of DQN.")
-elif disease_number == 10:
+elif disease_number == 3:
     # for 10 diseases.
-    parser.add_argument("--action_set", dest="action_set", type=str, default='./../data/10_diseases/action_set.p',help='path and filename of the action set')
-    parser.add_argument("--slot_set", dest="slot_set", type=str, default='./../data/10_diseases/slot_set.p',help='path and filename of the slots set')
-    parser.add_argument("--goal_set", dest="goal_set", type=str, default='./../data/10_diseases/goal_set.p',help='path and filename of user goal')
-    parser.add_argument("--disease_symptom", dest="disease_symptom", type=str,default="./../data/10_diseases/disease_symptom.p",help="path and filename of the disease_symptom file")
+    parser.add_argument("--action_set", dest="action_set", type=str, default='./../data/dataset/label/action_set.p',help='path and filename of the action set')
+    parser.add_argument("--slot_set", dest="slot_set", type=str, default='./../data/dataset/label/slot_set.p',help='path and filename of the slots set')
+    parser.add_argument("--goal_set", dest="goal_set", type=str, default='./../data/dataset/label/goal_set.p',help='path and filename of user goal')
+    parser.add_argument("--disease_symptom", dest="disease_symptom", type=str,default="./../data/dataset/label/disease_symptom.p",help="path and filename of the disease_symptom file")
     parser.add_argument("--max_turn", dest="max_turn", type=int, default=42, help="the max turn in one episode.")
     parser.add_argument("--input_size_dqn", dest="input_size_dqn", type=int, default=494, help="the input_size of DQN.")
 elif disease_number == 8:
@@ -96,13 +96,13 @@ elif disease_number == 8:
     parser.add_argument("--disease_symptom", dest="disease_symptom", type=str,default="./../data/8_diseases/disease_symptom.p",help="path and filename of the disease_symptom file")
     parser.add_argument("--max_turn", dest="max_turn", type=int, default=22, help="the max turn in one episode.")
     parser.add_argument("--input_size_dqn", dest="input_size_dqn", type=int, default=480, help="the input_size of DQN.")
-elif disease_number == 4:
+elif disease_number == 10:
     # for 4 diseases.
     # max_turn = 22
     max_turn = 22
     parser.add_argument("--action_set", dest="action_set", type=str, default='./../data/dataset/label/action_set.p',help='path and filename of the action set')
     parser.add_argument("--slot_set", dest="slot_set", type=str, default='./../data/dataset/label/slot_set.p',help='path and filename of the slots set')
-    parser.add_argument("--goal_set", dest="goal_set", type=str, default='./../data/dataset/label/acl2018-mds.p',help='path and filename of user goal')
+    parser.add_argument("--goal_set", dest="goal_set", type=str, default='./../data/dataset/label/goal_set.p',help='path and filename of user goal')
     parser.add_argument("--disease_symptom", dest="disease_symptom", type=str,default="./../data/dataset/label/disease_symptom.p",help="path and filename of the disease_symptom file")
     parser.add_argument("--max_turn", dest="max_turn", type=int, default=max_turn, help="the max turn in one episode.")
     # parser.add_argument("--input_size_dqn", dest="input_size_dqn", type=int, default=max_turn+137, help="the input_size of DQN.")
