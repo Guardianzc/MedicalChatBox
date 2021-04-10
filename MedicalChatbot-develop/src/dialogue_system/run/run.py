@@ -106,7 +106,7 @@ elif disease_number == 10:
     parser.add_argument("--disease_symptom", dest="disease_symptom", type=str,default="./../data/dataset/label/disease_symptom.p",help="path and filename of the disease_symptom file")
     parser.add_argument("--max_turn", dest="max_turn", type=int, default=max_turn, help="the max turn in one episode.")
     # parser.add_argument("--input_size_dqn", dest="input_size_dqn", type=int, default=max_turn+137, help="the input_size of DQN.")
-    parser.add_argument("--input_size_dqn", dest="input_size_dqn", type=int, default=max_turn + 357, help="the input_size of DQN.")
+    parser.add_argument("--input_size_dqn", dest="input_size_dqn", type=int, default=max_turn + 1827, help="the input_size of DQN.")
     parser.add_argument("--reward_for_not_come_yet", dest="reward_for_not_come_yet", type=float,default=-1)
     parser.add_argument("--reward_for_success", dest="reward_for_success", type=float,default=2*max_turn)
     parser.add_argument("--reward_for_fail", dest="reward_for_fail", type=float,default=-1.0*max_turn)
@@ -115,6 +115,7 @@ elif disease_number == 10:
 
 
 args = parser.parse_args()
+
 parameter = vars(args)
 
 agent_id = parameter.get("agent_id")
