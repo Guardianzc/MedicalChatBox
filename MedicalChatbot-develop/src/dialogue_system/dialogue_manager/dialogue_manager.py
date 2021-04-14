@@ -133,7 +133,7 @@ class DialogueManager(object):
             batch = random.sample(self.experience_replay_pool,batch_size)
             loss = self.state_tracker.agent.train(batch=batch)
             cur_bellman_err += loss["loss"]
-        print("cur bellman err %.4f, experience replay pool %s" % (float(cur_bellman_err) / len(self.experience_replay_pool), len(self.experience_replay_pool)))
+        print("cur bellman err %.4f, experience replay pool %s" % (float(cur_bellman_err) / (len(self.experience_replay_pool)+1e-12), len(self.experience_replay_pool)))
 
     def __train_actor_critic(self):
         """

@@ -124,8 +124,10 @@ class User(object):
         }
         if train_mode == 1:
             self.goal = random.choice(self.goal_set["train"])
+        elif train_mode == 2:
+            self.goal = self.goal_set["dev"][epoch_index]
         else:
-            self.goal = random.choice(self.goal_set["test"])
+            self.goal = self.goal_set["test"][epoch_index]
             # assert (epoch_index != None), "epoch index is None when evaluating."
             # self.goal = self.goal_set["test"][epoch_index]
         self.episode_over = False
@@ -209,8 +211,13 @@ class User(object):
         # TODO (Qianlong): response to request action.
         if len(agent_action["request_slots"].keys()) > 0:
             for slot in agent_action["request_slots"].keys():
+                # For asking same slots
+                if slot in self.state["history"].keys(): 
+                    self.dialogue_status = dialogue_configuration.DIALOGUE_STATUS_INFORM_WRONG_DISEASE
+                    self.episode_over = True
+                    self.state["action"] = dialogue_configuration.THANKS
                 # The requested slots are come from explicit_inform_slots.
-                if slot in self.goal["goal"]["explicit_inform_slots"].keys():
+                elif slot in self.goal["goal"]["explicit_inform_slots"].keys():
                     self.state["action"] = "inform"
                     self.state["inform_slots"][slot] = self.goal["goal"]["explicit_inform_slots"][slot]
                     # For requesting right symptoms of the user goal.

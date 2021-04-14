@@ -63,9 +63,13 @@ class RunningSteward(object):
                 # for _i in range(self.epoch_size):
                     self.simulation_epoch(epoch_size=self.epoch_size,train_mode=train_mode)
                     self.dialogue_manager.train()
+            if train_mode == 1:
+                test_mode = 2
+            else:
+                test_mode = 0
 
             # Evaluating the model.
-            result = self.evaluate_model(index)
+            result = self.evaluate_model(index, test_mode)
             if result["success_rate"] >= self.best_result["success_rate"] and \
                     result["success_rate"] > dialogue_configuration.SUCCESS_RATE_THRESHOLD and \
                     result["average_wrong_disease"] <= self.best_result["average_wrong_disease"] and train_mode==1:
@@ -77,7 +81,15 @@ class RunningSteward(object):
                 else:
                     pass
                 self.best_result = copy.deepcopy(result)
-
+            else:
+                if save_model == 1:
+                    result['success_rate'] = 0
+                    result['average_reward'] = 0
+                    result['average_turn'] = 0
+                    result['average_wrong_disease'] = 0
+                    result['ab_success_rate'] = 0
+                    self.dialogue_manager.state_tracker.agent.save_model(model_performance=result, episodes_index = 1000, checkpoint_path=self.checkpoint_path)
+                    print("The newest model was saved.")
     def simulation_epoch(self, epoch_size,train_mode):
         """
         Simulating one epoch when training model.
@@ -110,7 +122,7 @@ class RunningSteward(object):
         # print("%3d simulation success rate %s, ave reward %s, ave turns %s, ave wrong disease %s" % (index,res['success_rate'], res['average_reward'], res['average_turn'], res["average_wrong_disease"]))
         return res
 
-    def evaluate_model(self,index):
+    def evaluate_model(self,index, test_mode):
         """
         Evaluating model during training.
         :param index: int, the simulation index.
@@ -123,11 +135,14 @@ class RunningSteward(object):
         absolute_success_count = 0
         total_reward = 0
         total_truns = 0
-        evaluate_epoch_number = self.parameter.get("evaluate_epoch_number")
-        # evaluate_epoch_number = len(self.dialogue_manager.state_tracker.user.goal_set["test"])
+        #evaluate_epoch_number = self.parameter.get("evaluate_epoch_number")
+        if test_mode == 2:
+            evaluate_epoch_number = len(self.dialogue_manager.state_tracker.user.goal_set["dev"])
+        else:
+            evaluate_epoch_number = len(self.dialogue_manager.state_tracker.user.goal_set["test"])
         inform_wrong_disease_count = 0
         for epoch_index in range(0,evaluate_epoch_number, 1):
-            self.dialogue_manager.initialize(train_mode=train_mode, epoch_index=epoch_index)
+            self.dialogue_manager.initialize(train_mode=test_mode, epoch_index=epoch_index)
             episode_over = False
             while episode_over == False:
                 reward, episode_over, dialogue_status = self.dialogue_manager.next(save_record=False,train_mode=train_mode,greedy_strategy=0)

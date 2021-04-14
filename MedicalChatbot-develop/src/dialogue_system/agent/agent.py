@@ -211,7 +211,8 @@ class Agent(object):
         user_request_slots = copy.deepcopy(state["user_action"]["request_slots"])
         user_request_slots_rep = np.zeros(len(self.slot_set.keys()))
         for slot in user_request_slots.keys():
-            user_request_slots_rep[self.slot_set[slot]] = 1.0
+            if slot != 'disease':
+                user_request_slots_rep[self.slot_set[slot]] = 1.0
 
         # Agent last action rep.
         agent_action_rep = np.zeros(len(self.action_set))
@@ -250,7 +251,7 @@ class Agent(object):
         All diseases are treated as actions.
         :return: Action Space, a list of feasible actions.
         """
-
+        '''
         feasible_actions = [
             {'action': "confirm_question", 'inform_slots': {}, 'request_slots': {},"explicit_inform_slots":{}, "implicit_inform_slots":{}},
             {'action': "confirm_answer", 'inform_slots': {}, 'request_slots': {},"explicit_inform_slots":{}, "implicit_inform_slots":{}},
@@ -258,12 +259,15 @@ class Agent(object):
             {'action': dialogue_configuration.CLOSE_DIALOGUE, 'inform_slots': {}, 'request_slots': {},"explicit_inform_slots":{}, "implicit_inform_slots":{}},
             {'action': dialogue_configuration.THANKS, 'inform_slots': {}, 'request_slots': {}, "explicit_inform_slots": {}, "implicit_inform_slots": {}}
         ]
+        '''
+        feasible_actions = []
         #   Adding the inform actions and request actions.
         for slot in sorted(self.slot_set.keys()):
             feasible_actions.append({'action': 'request', 'inform_slots': {}, 'request_slots': {slot: dialogue_configuration.VALUE_UNKNOWN},"explicit_inform_slots":{}, "implicit_inform_slots":{}})
+            '''
             if slot != "disease":
                 feasible_actions.append({'action': 'inform', 'inform_slots': {slot: True}, 'request_slots': {}, "explicit_inform_slots":{}, "implicit_inform_slots":{}})
-
+            '''
 
         # Diseases as actions.
         for disease in sorted(self.disease_symptom.keys()):
