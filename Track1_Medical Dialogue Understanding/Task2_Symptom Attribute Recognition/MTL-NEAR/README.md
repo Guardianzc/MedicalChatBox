@@ -1,12 +1,12 @@
 # Track1- Task2：MTL-NEAR
 
-赛道一任务二（症状识别）的基础模型，供参考。
+**[第一届智能对话诊疗评测比赛imcs21](http://www.fudan-disc.com/sharedtask/imcs21/index.html)**赛道一任务二（症状识别）的多任务学习基础模型，由<19210980044@fudan.edu.cn>提供。
 
 ## 0. Set Up
 
 ### 0.1 Dataset
 
-数据集从网站**[第一届智能对话诊疗评测比赛](http://www.fudan-disc.com/sharedtask/imcs21/index.html)**中下载，将dataset文件夹放在Track1文件夹内。
+数据集从网站**[imcs21](http://www.fudan-disc.com/sharedtask/imcs21/index.html)**中下载，将dataset文件夹放在Track1文件夹内。
 
 ### 0.2 Requirements
 
@@ -50,3 +50,15 @@ python eval_track1_task2.py {gold_data_path} {pred_data_path}
 ## Attention
 
 为训练方便，此模型在训练和验证时是根据每个句子识别出的症状及类别计算F1值。在测试中将同一个样本的所有句子识别出的症状及类别用投票规则进行统一，再计算F1值。实验结果显示效果差别不大，最终评价方式将以样本级别为准，参照`eval_track1_task2.py`。
+
+
+## Experimental details
+
+| Metric               | Value                   |
+| -------------------- | ----------------------- |
+| F1 score on test set | 69.86%                  |
+| Training Epochs      | 10                      |
+| Training Time        | 4h                      |
+| CUDA                 | 10.1.243                |
+| GPU                  | GeForce RTX 2080Ti 11GB |
+| Linux Release        | Ubuntu 16.04.5 LTS      |

@@ -1,8 +1,7 @@
 
 
 # Track1- Task1：LSTM-NER
-
-赛道一任务一（命名实体识别）的基础模型，供参考。
+**[第一届智能对话诊疗评测比赛imcs21](http://www.fudan-disc.com/sharedtask/imcs21/index.html)**赛道一任务一（命名实体识别）的LSTM+CRF基础模型，由<19210980044@fudan.edu.cn>提供。
 
 ## 0. Set Up
 
@@ -50,3 +49,14 @@ python eval_track1_task2.py {gold_data_path} {pred_data_path}
 
 `gold_data_path`是具有真实标签的测试集的路径，`pred_data_path`是`submission_track1_task1.json`的路径。将`submission_track1_task1.json`提交后系统将会自动评价。
 
+
+## Experimental details
+
+| Metric               | Value                   |
+| -------------------- | ----------------------- |
+| F1 score on test set | 91.66%                  |
+| Training Epochs      | 10                      |
+| Training Time        | 3h                      |
+| CUDA                 | 10.1.243                |
+| GPU                  | GeForce RTX 2080Ti 11GB |
+| Linux Release        | Ubuntu 16.04.5 LTS      |
