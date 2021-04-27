@@ -11,8 +11,8 @@
 ### 0.2 Requirements
 
 - python>=3.7
-- torch>=1.5
-- transformers>=3.0
+- torch==1.8.1
+- transformers==4.5.1
 - pandas
 - sklearn
 - numpy
