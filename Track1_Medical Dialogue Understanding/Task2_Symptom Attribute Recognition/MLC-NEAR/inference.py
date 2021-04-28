@@ -11,13 +11,14 @@ from utils import CustomDataset, BERTClass, load_json, write_json
 
 
 prefix = './data'
+prefix2 = '../../dataset'
 model_prefix = './saved'
 
 # define device
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # load normalized symptom
-id2sym = {key: value for key, value in pd.read_csv(os.path.join(prefix, 'symptom_norm.csv'))['norm'].items()}
+id2sym = {key: value for key, value in pd.read_csv(os.path.join(prefix2, 'symptom_norm.csv'))['norm'].items()}
 
 # load model
 best_epoch = 12
