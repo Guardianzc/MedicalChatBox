@@ -1,6 +1,6 @@
 # Track1- Task2：MTL-NEAR
 
-**[第一届智能对话诊疗评测比赛imcs21](http://www.fudan-disc.com/sharedtask/imcs21/index.html)**赛道一任务二（症状识别）的多任务学习基础模型。
+**[第一届智能对话诊疗评测比赛imcs21](http://www.fudan-disc.com/sharedtask/imcs21/index.html)**赛道一任务二（症状识别）的多任务学习基础模型，由<19210980044@fudan.edu.cn>提供。
 
 ## 0. Set Up
 
