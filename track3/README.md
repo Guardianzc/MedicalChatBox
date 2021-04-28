@@ -36,24 +36,6 @@ python ./src/dialogue_system/run/run.py --train_mode 0 --saved_model=<model_dir>
 注：该文件仅为提交程序的参考，提交时请提交整个模型
     有一些已经训练好的baseline存放在'./src/dialogue_system/model/dqn/checkpoint04/checkpoint_d4_agt1_dqn1_T22/'下，可用于参考
 
-- DQN 模型
-* 训练
-```python
-python ./src/dialogue_system/run/run.py --train_mode 1
- ```
-参数说明见train.py的args和dialogue_configuration.py，可以更改各种情况的reward
-
-* 验证
-```python
-python ./src/dialogue_system/run/run.py --train_mode 2 --saved_model=<model_dir> 
- ```
-
-* 测试
-```python
-python ./src/dialogue_system/run/run.py --train_mode 0 --saved_model=<model_dir> 
- ```
- 
-注：该文件仅为提交程序的参考，提交时请提交整个模型
 
 - SVM&MLP 模型
 ```python
