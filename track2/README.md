@@ -20,7 +20,7 @@ sumeval==0.2.2
 
 训练集和验证集参赛选手可以重新进行划分。但是测试集是固定的。
 
-参赛选手可以选择使用赛道一的数据改进模型。但是要求测试时的输入为主诉和对话。（比赛第二阶段会检查模型）
+参赛选手可以选择使用数据集中包含的其他信息（如：实体信息）改进模型，但是要求测试时的输入为主诉和对话。（比赛第二阶段会检查模型）
 
 * 数据预处理
 
@@ -80,9 +80,9 @@ python decode.py --model_filename=<model_dir> --pointer_gen --is_coverage
 
 # 第一阶段评测说明
 
-在文件夹evaluation中，给出了第一阶段提交的文件样例和自动化评价的代码。
+在文件夹![evaluation](https://github.com/Guardianzc/MedicalChatBox/edit/main/track2/evaluation)中，给出了第一阶段提交的文件样例和自动化评价的代码。
 
-- 提交文件要求：对命名为“生成摘要_test" 的文件夹打包成 "生成摘要\_test.zip" 上传。其中含有以“test_XXXX"命名的文件，XXXX是example_id。每个文件是生成的诊疗报告。其中每个字符用空格‘ ’隔开。
+- 提交文件要求：命名为“生成摘要_test" 的文件夹中含有以“test_XXXX"命名的文件，XXXX是example_id。每个文件是生成的诊疗报告。其中每个字符用空格‘ ’隔开。
 
 - 自动化测评的代码：evaluate.py
 
