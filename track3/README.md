@@ -48,14 +48,14 @@ python ./src/classifier/run/run.py --model SVM --fold False
 关于baseline的一些模型结果存放在[Chatbox_baseline实验结果.xlsx](./Chatbox_baseline实验结果.xlsx) 中
 
 # 提交
-关于提交，请参赛者提交两部分文件：
-    1、整个模型——可以通过修改路径调整不同goal_set输入并进行交互，同时生成result.json文件，格式为：
-	{'id1': "Symptoms":[所有模型在'id1'样本下request的症状(包括自述中症状)]
-	       "Disease":模型判断'id1'样本下所患疾病
-     'id2':...
-	 ...
-	}
-	2、根据数据中的 dev set 生成的 result.json
+关于提交，请参赛者提交两部分文件：  
+    1、整个模型——可以通过修改路径调整不同goal_set输入并进行交互，同时生成result.json文件，格式为：  
+	{'id1': "Symptoms":[所有模型在'id1'样本下request的症状(包括自述中症状)]  
+	       "Disease":模型判断'id1'样本下所患疾病  
+     'id2':...  
+	 ...  
+	}  
+    2、根据数据中的 dev set 生成的 result.json  
 
 result.json的示例和评测文件保存在	[评测文件夹](./MedicalChatbot-track3/src/Evaluation/) 中
 
