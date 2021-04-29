@@ -44,7 +44,7 @@ python ./src/classifier/run/run.py --model SVM --fold False
 注：如需使用MLP模型，则将SVM改为MLP；fold 参数控制将数据集所有按5-fold划分(True)或按指定划分(False)
 因数据集中没有test set，故可能与报告数据有所出入
 
-# 模型
+# Baseline
 关于baseline的一些模型结果存放在[Chatbox_baseline实验结果.xlsx](./Chatbox_baseline实验结果.xlsx) 中
 
 # 提交
