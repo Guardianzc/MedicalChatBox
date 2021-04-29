@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+import pickle
 """
 Basic user simulator, random choice action.
 
@@ -112,6 +113,8 @@ class User(object):
         used for initializing an instance or an episode.
         :return: Nothing
         """
+        if train_mode == 0:
+            self.goal_set = pickle.load(file=open(self.parameter["goal_test_set"], "rb"))
         self.state = {
             "turn":0,
             "action":None,
@@ -128,6 +131,7 @@ class User(object):
             self.goal = self.goal_set["dev"][epoch_index]
         else:
             self.goal = self.goal_set["test"][epoch_index]
+
             # assert (epoch_index != None), "epoch index is None when evaluating."
             # self.goal = self.goal_set["test"][epoch_index]
         self.episode_over = False

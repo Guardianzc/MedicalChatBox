@@ -88,7 +88,7 @@ class DialogueManager(object):
         if episode_over == True:
             self.trajectory_pool.append(copy.deepcopy(self.trajectory))
 
-        return reward, episode_over,dialogue_status
+        return reward, episode_over,dialogue_status, agent_action
 
     def initialize(self,train_mode=1, epoch_index=None):
         self.trajectory = []
@@ -114,9 +114,6 @@ class DialogueManager(object):
     def train(self):
         if isinstance(self.state_tracker.agent, AgentDQN):
             self.__train_dqn()
-            self.state_tracker.agent.update_target_network()
-        elif isinstance(self.state_tracker.agent, AgentActorCritic):
-            self.__train_actor_critic()
             self.state_tracker.agent.update_target_network()
 
     def __train_dqn(self):

@@ -126,18 +126,17 @@ class SymptomClassifier(object):
         fold = self.fold
         fold_num = self.fold_num
         self.goal_set["train"] = self.split_data(self.goal_set["train"])
-        self.goal_set["test"] = self.split_data(self.goal_set["test"])
+        #self.goal_set["test"] = self.split_data(self.goal_set["test"])
         self.goal_set["dev"] = self.split_data(self.goal_set["dev"])
-        train_sample = self.goal_set["train"] + self.goal_set["test"] + self.goal_set["dev"]
- 
+        train_sample = self.goal_set["train"] + self.goal_set["dev"] #+ self.goal_set["test"] 
         if fold == False:            
             fold_list = dict()
             fold_list[0] = self.goal_set['train']
             fold_list[1] = self.goal_set['dev']
-            fold_list[2] = self.goal_set['test']
-            fold_num = 3
+            #fold_list[2] = self.goal_set['test']
+            fold_num = 2
         else:
-            all_sample = self.goal_set["train"] + self.goal_set["test"] + self.goal_set["dev"]
+            all_sample = self.goal_set["train"] + self.goal_set["dev"] #+ self.goal_set["test"] 
             random.shuffle(all_sample)
             fold_size = int(len(all_sample) / fold_num)
             fold_list = [all_sample[i:i+fold_size] for i in range(0,len(all_sample),fold_size)]
@@ -228,7 +227,7 @@ class SymptomClassifier(object):
                         new_train_set[list_class] += value
                 self.MLP_build(new_train_set, test_set, test_set)
         else:
-            self.MLP_build(self.data_set[0], self.data_set[1], self.data_set[2])
+            self.MLP_build(self.data_set[0], self.data_set[1], self.data_set[1])
             
     def MLP_build(self, train_set, dev_set, test_set):
 
@@ -300,9 +299,10 @@ class SymptomClassifier(object):
         else:
             print('dev = ')
             self.train_sklearn_svm({'train':self.data_set[0]}, self.data_set[1])
+            '''
             print('test = ')
             self.train_sklearn_svm({'train':self.data_set[0]}, self.data_set[2])
-
+            '''
     def train_sklearn_svm(self, train_set, test_set):
         disease_accuracy = {}
         disease_accuracy["total_accuracy"] = {}
