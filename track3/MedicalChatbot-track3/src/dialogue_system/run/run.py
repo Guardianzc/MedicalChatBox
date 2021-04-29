@@ -37,7 +37,7 @@ parser.add_argument("--batch_size", dest="batch_size", type=int, default=30, hel
 parser.add_argument("--log_dir", dest="log_dir", type=str, default="./../../../log/", help="directory where event file of training will be written, ending with /")
 parser.add_argument("--epsilon", dest="epsilon", type=float, default=0.1, help="the greedy of DQN")
 parser.add_argument("--gamma", dest="gamma", type=float, default=1.0, help="The discount factor of immediate reward.")
-parser.add_argument("--train_mode", dest="train_mode", type=int, default=2, help="training mode? True:1 , dev:2")
+parser.add_argument("--train_mode", dest="train_mode", type=int, default=1, help="training mode? True:1 , dev:2")
 
 
 parser.add_argument("--save_model", dest="save_model", type=int, default=1,help="save model? 1:Yes,0:No")
@@ -61,7 +61,7 @@ max_turn = 22
 parser.add_argument("--action_set", dest="action_set", type=str, default='./../data/dataset/label/action_set.p',help='path and filename of the action set')
 parser.add_argument("--slot_set", dest="slot_set", type=str, default='./../data/dataset/label/slot_set.p',help='path and filename of the slots set')
 parser.add_argument("--goal_set", dest="goal_set", type=str, default='./../data/dataset/label/goal_set.p',help='path and filename of user goal')
-parser.add_argument("--goal_test_set", dest="goal_test_set", type=str, default='./../data/dataset/label/goal_test_set.p',help='path and filename of user goal')
+#parser.add_argument("--goal_test_set", dest="goal_test_set", type=str, default='./../data/dataset/label/goal_test_set.p',help='path and filename of user goal')
 parser.add_argument("--disease_symptom", dest="disease_symptom", type=str,default="./../data/dataset/label/disease_symptom.p",help="path and filename of the disease_symptom file")
 parser.add_argument("--max_turn", dest="max_turn", type=int, default=max_turn, help="the max turn in one episode.")
 # parser.add_argument("--input_size_dqn", dest="input_size_dqn", type=int, default=max_turn+137, help="the input_size of DQN.")

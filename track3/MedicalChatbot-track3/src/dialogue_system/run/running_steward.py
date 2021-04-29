@@ -28,7 +28,7 @@ class RunningSteward(object):
         self.slot_set = pickle.load(file=open(parameter["slot_set"], "rb"))
         self.action_set = pickle.load(file=open(parameter["action_set"], "rb"))
         self.goal_set = pickle.load(file=open(parameter["goal_set"], "rb"))
-        self.goal_test_set = pickle.load(file=open(parameter["goal_test_set"], "rb"))
+        #self.goal_test_set = pickle.load(file=open(parameter["goal_test_set"], "rb"))
         self.disease_symptom = pickle.load(file=open(parameter["disease_symptom"], "rb"))
         self.learning_curve = {}
         user = User(goal_set=self.goal_set, action_set=self.action_set, parameter=parameter)
