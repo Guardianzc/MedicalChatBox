@@ -1,13 +1,13 @@
 
 
 # Track1- Task1：LSTM-NER
-**[第一届智能对话诊疗评测比赛imcs21](http://www.fudan-disc.com/sharedtask/imcs21/index.html)**赛道一任务一（命名实体识别）的LSTM+CRF基础模型。
+[第一届智能对话诊疗评测比赛imcs21](http://www.fudan-disc.com/sharedtask/imcs21/index.html)赛道一任务一（命名实体识别）的LSTM+CRF基础模型。
 
 ## 0. Set Up
 
 ### 0.1 Dataset
 
-数据集从网站**[第一届智能对话诊疗评测比赛](http://www.fudan-disc.com/sharedtask/imcs21/index.html)**中下载，将dataset文件夹放在Track1文件夹内。。
+数据集从网站[imcs21](http://www.fudan-disc.com/sharedtask/imcs21/index.html)中下载，将dataset文件夹放在Track1文件夹内。。
 
 ### 0.2 Requirements
 
