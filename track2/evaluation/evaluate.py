@@ -82,7 +82,7 @@ def compute_scores(sh,srs):
 
 
 if __name__ == '__main__':   
-    with open('../medi_finished_dir/vocab') as f:
+    with open('./vocab') as f:
         word2id = {}
         while True:
             l = f.readline()
