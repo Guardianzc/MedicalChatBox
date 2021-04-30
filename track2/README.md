@@ -90,7 +90,7 @@ python decode.py --model_filename=<model_dir> --pointer_gen --is_coverage
 
 # References
 - [Get To The Point: Summarization with Pointer-Generator Networks](https://arxiv.org/abs/1704.04368)
-- [abisee/pointer_summarizer]([GitHub - abisee/pointer-generator: Code for the ACL 2017 paper "Get To The Point: Summarization with Pointer-Generator Networks"](https://github.com/abisee/pointer-generator))
+- [abisee//pointer_summarizer]([GitHub - abisee/pointer-generator: Code for the ACL 2017 paper "Get To The Point: Summarization with Pointer-Generator Networks"](https://github.com/abisee/pointer-generator))
 
 - [Task-oriented Dialogue System for Automatic Diagnosis](https://www.aclweb.org/anthology/P18-2033.pdf)
 
