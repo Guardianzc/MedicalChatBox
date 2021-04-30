@@ -89,7 +89,7 @@ python decode.py --model_filename=<model_dir> --pointer_gen --is_coverage
 - Baseline 自动化评测得分：
 
 | Model             | ROUGE-1 | ROUGE-2 | ROUGE-L |
-| ----------------- | ------- | ------- | ------- |
+| :---------------- | :-----: | :-----: | :-----: |
 | seq2seq           | 0.5367  | 0.4192  | 0.5084  |
 | pointer-generator | 0.5514  | 0.4449  | 0.5326  |
 
