@@ -87,6 +87,7 @@ python decode.py --model_filename=<model_dir> --pointer_gen --is_coverage
 - 自动化测评的代码：evaluate.py
 
 - Baseline 自动化评测得分：
+
 | Model             | ROUGE-1 | ROUGE-2 | ROUGE-L |
 | ----------------- | ------- | ------- | ------- |
 | seq2seq           | 0.5367  | 0.4192  | 0.5084  |
