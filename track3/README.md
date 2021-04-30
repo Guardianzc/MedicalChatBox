@@ -57,6 +57,9 @@ python ./src/classifier/run/run.py --model SVM --fold False
 	}  
     2、根据数据中的 dev set 生成的 result.json  
 
+# 评测
+评测相关程序位于Evaluation文件夹中，通过输出的 result.json 和 goal_set 进行正确率和F1的计算
+ 
 result.json的示例和评测文件保存在	[评测文件夹](./MedicalChatbot-track3/src/Evaluation/) 中
 
 # References
