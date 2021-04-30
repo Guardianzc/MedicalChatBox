@@ -82,6 +82,8 @@ python decode.py --model_filename=<model_dir> --pointer_gen --is_coverage
 
 在文件夹[evaluation](https://github.com/Guardianzc/MedicalChatBox/edit/main/track2/evaluation)中，给出了第一阶段提交的文件样例和自动化评价的代码。
 
+- evaluation 文件夹中的vocab是基于训练数据的词典。在评测中，也将使用该词典。
+
 - 提交文件要求：命名为“生成摘要_test" 的文件夹中含有以“test_XXXX"命名的文件，XXXX是example_id。每个文件是生成的诊疗报告。其中每个字符用空格‘ ’隔开。
 
 - 自动化测评的代码：evaluate.py
