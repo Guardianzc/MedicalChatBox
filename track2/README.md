@@ -86,7 +86,11 @@ python decode.py --model_filename=<model_dir> --pointer_gen --is_coverage
 
 - 自动化测评的代码：evaluate.py
 
-
+- Baseline 自动化评测得分：
+| Model             | ROUGE-1 | ROUGE-2 | ROUGE-L |
+| ----------------- | ------- | ------- | ------- |
+| seq2seq           | 0.5367  | 0.4192  | 0.5084  |
+| pointer-generator | 0.5514  | 0.4449  | 0.5326  |
 
 # References
 - [Get To The Point: Summarization with Pointer-Generator Networks](https://arxiv.org/abs/1704.04368)
