@@ -16,7 +16,7 @@ sumeval==0.2.2
 
 * 数据说明
 
-数据从官网下载，并保存至dataset文件夹中。
+数据从[官网下载](http://210.16.187.147:20023/download)，并保存至dataset文件夹中。
 
 训练集和验证集参赛选手可以重新进行划分。但是测试集是固定的。
 
@@ -80,7 +80,7 @@ python decode.py --model_filename=<model_dir> --pointer_gen --is_coverage
 
 # 第一阶段评测说明
 
-在文件夹![evaluation](https://github.com/Guardianzc/MedicalChatBox/edit/main/track2/evaluation)中，给出了第一阶段提交的文件样例和自动化评价的代码。
+在文件夹[evaluation](https://github.com/Guardianzc/MedicalChatBox/edit/main/track2/evaluation)中，给出了第一阶段提交的文件样例和自动化评价的代码。
 
 - 提交文件要求：命名为“生成摘要_test" 的文件夹中含有以“test_XXXX"命名的文件，XXXX是example_id。每个文件是生成的诊疗报告。其中每个字符用空格‘ ’隔开。
 
@@ -89,6 +89,8 @@ python decode.py --model_filename=<model_dir> --pointer_gen --is_coverage
 
 
 # References
+- [Get To The Point: Summarization with Pointer-Generator Networks](https://arxiv.org/abs/1704.04368)
+- [Github - abisee/pointer_summarizer](https://github.com/abisee/pointer-generator)
 
 - [Task-oriented Dialogue System for Automatic Diagnosis](https://www.aclweb.org/anthology/P18-2033.pdf)
 
