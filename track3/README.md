@@ -45,8 +45,9 @@ python ./src/dialogue_system/run/run.py --train_mode 0 --saved_model=<model_dir>
 
 
 # 评测
-评测相关程序位于[评测文件夹](./MedicalChatbot-track3//Evaluation/) 中，通过模型输出的 result.json 和 goal_set 进行正确率和F1的计算
- 
+评测相关程序位于[评测文件夹](./MedicalChatbot-track3//Evaluation/) 中，通过模型输出的 result.json 和 goal_set 进行疾病预测正确率和症状预测Recall的计算
+每个疾病对用户模拟器进行症状问询的轮次不应大于11轮
+ 总分 = 0.8 * 疾病判断的正确率 + 0.2 * 症状判断的召回率
 result.json的示例和评测文件也保存在	[评测文件夹](./MedicalChatbot-track3//Evaluation/) 中
 
 # References
