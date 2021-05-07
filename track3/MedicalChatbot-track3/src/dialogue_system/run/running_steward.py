@@ -130,7 +130,7 @@ class RunningSteward(object):
         absolute_success_count = 0
         total_reward = 0
         total_truns = 0
-        f1_score = 0
+        recall_score = 0
         
         if test_mode == 2:
             goal_set = all_goal_set["dev"]
@@ -170,7 +170,7 @@ class RunningSteward(object):
             for key, value in final_state.items():
                 if value != "I don't know.":
                     correct_inform += 1
-            f1_score += 2 * correct_inform / (len(all_state) + len(final_state))
+            recall_score += correct_inform / len(all_state)
             #print(2 * correct_inform / (len(all_state) + len(final_state)))
             if dialogue_status == dialogue_configuration.DIALOGUE_STATUS_SUCCESS:
                 success_count += 1
@@ -178,22 +178,22 @@ class RunningSteward(object):
                     absolute_success_count += 1
         ###########################  print .json file ########################
         if print_result:
-            with open('./../../Evaluation/result.json','w') as file_obj:
+            with open('./../../../Evaluation/result.json','w') as file_obj:
                 json.dump(goal_slots, file_obj)
             
-        average_F1 = float("%.3f" % (float(f1_score) / evaluate_epoch_number))
+        average_recall = float("%.3f" % (float(recall_score) / evaluate_epoch_number))
         success_rate = float("%.3f" % (float(success_count) / evaluate_epoch_number))
         absolute_success_rate = float("%.3f" % (float(absolute_success_count) / evaluate_epoch_number))
         average_reward = float("%.3f" % (float(total_reward) / evaluate_epoch_number))
         average_turn = float("%.3f" % (float(total_truns) / evaluate_epoch_number))
         average_wrong_disease = float("%.3f" % (float(inform_wrong_disease_count) / evaluate_epoch_number))
-        res = {"success_rate":success_rate, "average_reward": average_reward, "average_turn": average_turn, "average_wrong_disease":average_wrong_disease,"ab_success_rate":absolute_success_rate, 'average_F1': average_F1}
+        res = {"success_rate":success_rate, "average_reward": average_reward, "average_turn": average_turn, "average_wrong_disease":average_wrong_disease,"ab_success_rate":absolute_success_rate, 'average_recall': average_recall}
         self.learning_curve.setdefault(index, dict())
         self.learning_curve[index]["success_rate"]=success_rate
         self.learning_curve[index]["average_reward"]=average_reward
         self.learning_curve[index]["average_turn"] = average_turn
         self.learning_curve[index]["average_wrong_disease"]=average_wrong_disease
-        print("%3d simulation SR %s, ABSR %s, ave reward %s, ave turns %s, ave wrong disease %s, ave F1 %s" % (index,res['success_rate'], res["ab_success_rate"],res['average_reward'], res['average_turn'], res["average_wrong_disease"], res["average_F1"]))
+        print("%3d simulation SR %s, ABSR %s, ave reward %s, ave turns %s, ave wrong disease %s, ave F1 %s" % (index,res['success_rate'], res["ab_success_rate"],res['average_reward'], res['average_turn'], res["average_wrong_disease"], res["average_recall"]))
         return res
 
     def warm_start(self, agent, epoch_number):

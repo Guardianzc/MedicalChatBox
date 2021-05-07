@@ -37,12 +37,12 @@ parser.add_argument("--batch_size", dest="batch_size", type=int, default=30, hel
 parser.add_argument("--log_dir", dest="log_dir", type=str, default="./../../../log/", help="directory where event file of training will be written, ending with /")
 parser.add_argument("--epsilon", dest="epsilon", type=float, default=0.1, help="the greedy of DQN")
 parser.add_argument("--gamma", dest="gamma", type=float, default=1.0, help="The discount factor of immediate reward.")
-parser.add_argument("--train_mode", dest="train_mode", type=int, default=1, help="training mode? True:1 , dev:2")
+parser.add_argument("--train_mode", dest="train_mode", type=int, default=2, help="training mode? True:1 , dev:2")
 
 
 parser.add_argument("--save_model", dest="save_model", type=int, default=1,help="save model? 1:Yes,0:No")
 parser.add_argument("--checkpoint_path",dest="checkpoint_path", type=str, default="./../model/dqn/checkpoint/", help="the folder where models save to, ending with /.")
-parser.add_argument("--saved_model", dest="saved_model", type=str, default="./../model/dqn/checkpoint04/checkpoint_d4_agt1_dqn1_T22/model_d4_agent1_dqn1_s0.667_r44.092_t4.115_wd0.31_e165.ckpt-165")
+parser.add_argument("--saved_model", dest="saved_model", type=str, default="./../model/dqn/checkpoint04/checkpoint_d4_agt1_dqn1_T22/model_d4_agent1_dqn1_s0.672_r44.872_t3.494_wd0.328_e239.ckpt-239")
 
 parser.add_argument("--run_id", dest='run_id', type=int, default=1, help='the id of this running.')
 
