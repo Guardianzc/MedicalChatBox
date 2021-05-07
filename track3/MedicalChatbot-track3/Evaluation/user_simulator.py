@@ -33,34 +33,37 @@ class User(object):
 
     def request(self, disease_id, slots):
         '''
-        :return: 3 --- "Exceeded the maximum number of queries."
-                 2 --- not know
-                 1 --- True
-                 0 --- False
+        :return: raise error --- "Exceeded the maximum number of queries."
+                 '3' --- not in the dialoge
+                 '2' --- not_sure
+                 '1' --- True
+                 '0' --- False
         '''
         self.request_times[disease_id] += 1
         if self.request_times[disease_id] > self.max_turn:
-            return 3
+            raise TypeError('Exceeded the maximum number of queries.')
         else:
             if slots in self.goal_slots[disease_id].keys():
-                if self.goal_slots[disease_id][slots]:
-                    return 1
-                else:
-                    return 0
-            else:
-                return 2
+                return self.goal_slots[disease_id][slots]
+            else: 
+                return '3'
 
     def request_time(self, disease_id):
         return self.request_times[disease_id]
     
 if __name__ == '__main__':
     user = User('.\\goal_set_simul.p')
-    print(user.request_time('10293005'))
-    print(user.request('10293005','咳嗽'))
-    print(user.request('10293005','出汗'))
-    print(user.request('10293005','缺钙'))
+    '''
+    self.goal_slots['10569463'] = 
+        {'发热': '0', '消化不良': '2', '稀便': '1', '腹泻': '1'}
+    '''
+    print(user.request_time('10569463'))
+    print(user.request('10569463','发热'))
+    print(user.request('10569463','消化不良'))
+    print(user.request('10569463','稀便'))
+    print(user.request('10569463','缺钙'))
     for i in range(20):
-        user.request('10293005','支气管炎')
-    print(user.request('10293005','缺钙'))
-    print(user.request_time('10293005'))
+        user.request('10569463','腹泻')
+    print(user.request('10569463','缺钙'))
+    print(user.request_time('10569463'))
 
