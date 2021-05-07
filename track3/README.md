@@ -39,15 +39,15 @@ python ./src/dialogue_system/run/run.py --train_mode 0 --saved_model=<model_dir>
 
 # 提交
 关于提交，请参赛者提交两部分文件：  
-    1、我们要求所有参赛者提交模型和代码，在[评测文件夹](./MedicalChatbot-track3//Evaluation/)中，我们提供了用户模拟器、测试集示例、输出结果示例和评测示例，参赛者可以import我们所提供的用户模拟器进行交互，具体方法请参见其中代码
-       在提交的模型和代码中，请提交一个包含以下字段的可运行脚本：
-	Python run.py –data_path (数据集路径) —model_path (模型路径)
+    1、我们要求所有参赛者提交模型和代码，在[评测文件夹](./MedicalChatbot-track3//Evaluation/)中，我们提供了用户模拟器、测试集示例、输出结果示例和评测示例，参赛者可以import我们所提供的用户模拟器进行交互，具体方法请参见其中代码  
+       在提交的模型和代码中，请提交一个包含以下字段的可运行脚本：  
+       Python run.py –data_path (数据集路径) —model_path (模型路径)
 
 
 # 评测
-评测相关程序位于[评测文件夹](./MedicalChatbot-track3//Evaluation/) 中，通过模型输出的 result.json 和 goal_set 进行疾病预测正确率和症状预测Recall的计算
-每个疾病对用户模拟器进行症状问询的轮次不应大于11轮
- 总分 = 0.8 * 疾病判断的正确率 + 0.2 * 症状判断的召回率
+评测相关程序位于[评测文件夹](./MedicalChatbot-track3//Evaluation/) 中，通过模型输出的 result.json 和 goal_set 进行疾病预测正确率和症状预测Recall的计算  
+每个疾病对用户模拟器进行症状问询的轮次不应大于11轮  
+ 总分 = 0.8 * 疾病判断的正确率 + 0.2 * 症状判断的召回率  
 result.json的示例和评测文件也保存在	[评测文件夹](./MedicalChatbot-track3//Evaluation/) 中
 
 # References
