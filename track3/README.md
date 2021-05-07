@@ -37,30 +37,17 @@ python ./src/dialogue_system/run/run.py --train_mode 0 --saved_model=<model_dir>
     有一些已经训练好的baseline存放在'./src/dialogue_system/model/dqn/checkpoint04/checkpoint_d4_agt1_dqn1_T22/'下，可用于参考
 
 
-- SVM&MLP 模型
-```python
-python ./src/classifier/run/run.py --model SVM --fold False 
- ```
-注：如需使用MLP模型，则将SVM改为MLP；fold 参数控制将数据集所有按5-fold划分(True)或按指定划分(False)
-因数据集中没有test set，故可能与报告数据有所出入
-
-# Baseline
-关于baseline的一些模型结果存放在[Chatbox_baseline实验结果.xlsx](./Chatbox_baseline实验结果.xlsx) 中
-
 # 提交
 关于提交，请参赛者提交两部分文件：  
-    1、整个模型——可以通过修改路径调整不同goal_set输入并进行交互，同时生成result.json文件，格式为：  
-	{'id1': {"Symptoms": [ 所有模型在'id1'样本下request的症状(包括自述中症状) ],  
-	       	"Disease": 模型判断'id1'样本下所患疾病}  
-	'id2':... 
-		...  
-	}  
-    2、根据数据中的 dev set 生成的 result.json  
+    1、我们要求所有参赛者提交模型和代码，在[评测文件夹](./MedicalChatbot-track3//Evaluation/)中，我们提供了用户模拟器、测试集示例、输出结果示例和评测示例，参赛者可以import我们所提供的用户模拟器进行交互，具体方法请参见其中代码
+       在提交的模型和代码中，请提交一个包含以下字段的可运行脚本：
+	Python run.py –data_path (数据集路径) —model_path (模型路径)
+
 
 # 评测
-评测相关程序位于[评测文件夹](./MedicalChatbot-track3/src/Evaluation/) 中，通过模型输出的 result.json 和 goal_set 进行正确率和F1的计算
+评测相关程序位于[评测文件夹](./MedicalChatbot-track3//Evaluation/) 中，通过模型输出的 result.json 和 goal_set 进行正确率和F1的计算
  
-result.json的示例和评测文件也保存在	[评测文件夹](./MedicalChatbot-track3/src/Evaluation/) 中
+result.json的示例和评测文件也保存在	[评测文件夹](./MedicalChatbot-track3//Evaluation/) 中
 
 # References
 
