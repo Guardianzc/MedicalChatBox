@@ -38,10 +38,37 @@ python ./src/dialogue_system/run/run.py --train_mode 0 --saved_model=<model_dir>
 
 
 # 提交
-关于提交，请参赛者提交两部分文件：  
-    1、我们要求所有参赛者提交模型和代码，在[评测文件夹](./MedicalChatbot-track3//Evaluation/)中，我们提供了用户模拟器、测试集示例、输出结果示例和评测示例，参赛者可以import我们所提供的用户模拟器进行交互，具体方法请参见其中代码  
-       在提交的模型和代码中，请提交一个包含以下字段的可运行脚本：  
-       Python run.py –data_path (数据集路径) —model_path (模型路径)
+1. submission文件（json）
+
+格式参考与数据集同时发布的evaluate文件中的`result.json`，与`repo`文件夹放置在同一级。可以将执行`predict.py`的输出结果拷贝至此，命名为`submission.json`。
+
+2. repo文件夹
+
+该文件夹至少需包括4个文件（文件夹）
+
+- `models`：储存训练好的模型参数
+
+- `user_simulator.py`：官方提供的用户模拟器，请勿修改！
+
+  - 初始化参数为测试集输入数据路径（利用pickle储存的字典，参考`Evaluation/goal_set_simul.p`）
+
+- `predict.py`：标签预测脚本，根据输入文件和模型，预测id对应的标签。需包含以下几个输入参数（**请统一用该参数名称！**）
+
+  - `test_input_file`：测试集输入文件路径（pickle文件，参考`Evaluation/goal_set_simul.p`）
+  - `test_output_file`：测试集输出文件路径（json文件，参考参考`Evaluation/result.json`）
+  - `model_dir`：加载的模型存放的路径
+
+- `run.sh`：执行预测脚本
+
+  ```shell
+  python predict.py --test_input_file {test_file_path} --test_output_file {output_file_path} --model_dir ./models/best.pt
+  ```
+
+  **注：**`run.sh`中请修改`--model_dir`参数，指定模型路径，`--test_input_file`和`--test_output_file`保留`{test_file_path}`和`{output_file_path}`不要更改！
+
+注：
+
+提交前请对`predict.py`脚本进行测试！
 
 
 # 评测
