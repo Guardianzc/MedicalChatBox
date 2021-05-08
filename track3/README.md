@@ -21,7 +21,7 @@ numpy==1.13.3
 ```python
 python ./src/dialogue_system/run/run.py --train_mode 1
  ```
-参数说明见train.py的args和dialogue_configuration.py，可以更改各种情况的reward
+参数说明见run.py的args和dialogue_configuration.py，可以更改各种情况的reward
 
 * 验证
 ```python
