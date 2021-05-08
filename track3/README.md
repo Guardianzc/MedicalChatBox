@@ -63,7 +63,7 @@ python ./src/dialogue_system/run/run.py --train_mode 0 --saved_model=<model_dir>
   ```shell
   #!/bin/bash
 
-  source ~/env/scv0xxx-1/bin/activate # 指定启用环境, 修改xxx即可
+  source ~/env/scv0xxx-3/bin/activate # 指定启用环境, 修改xxx即可
 
   python predict.py --test_input_file {test_file_path} --test_output_file {output_file_path} --model_dir ./models/best.pt
   ```
