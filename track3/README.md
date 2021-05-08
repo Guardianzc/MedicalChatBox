@@ -38,11 +38,8 @@ python ./src/dialogue_system/run/run.py --train_mode 0 --saved_model=<model_dir>
 
 
 # 提交
-1. submission文件（json）
 
-格式参考与数据集同时发布的evaluate文件中的`result.json`，与`repo`文件夹放置在同一级。可以将执行`predict.py`的输出结果拷贝至此，命名为`submission.json`。
-
-2. repo文件夹
+1. repo文件夹
 
 该文件夹至少需包括4个文件（文件夹）
 
