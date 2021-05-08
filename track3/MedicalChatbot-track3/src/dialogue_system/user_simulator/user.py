@@ -100,9 +100,7 @@ class User(object):
         for slot in goal["explicit_inform_slots"].keys():
             if slot not in self.state["request_slots"].keys():
                 self.state["rest_slots"][slot] = "explicit_inform_slots"
-        for slot in goal["request_slots"].keys():
-            if slot not in self.state["request_slots"].keys():
-                self.state["rest_slots"][slot] = "request_slots"
+
         # user inform
         user_action = self._assemble_user_action()
         # return a state (user inform)

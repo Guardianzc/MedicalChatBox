@@ -70,10 +70,7 @@ class StateTracker(object):
                 self.state["current_slots"]["wrong_diseases"].append(user_action["inform_slots"]["disease"])
         if "disease" in inform_slots: inform_slots.remove("disease")
         for slot in inform_slots:
-            if slot in self.user.goal["goal"]["request_slots"].keys():
-                self.state["current_slots"]["proposed_slots"][slot] = user_action["inform_slots"][slot]
-            else:
-                self.state["current_slots"]['inform_slots'][slot] = user_action["inform_slots"][slot]
+            self.state["current_slots"]['inform_slots'][slot] = user_action["inform_slots"][slot]
             if slot in self.state["current_slots"]["agent_request_slots"].keys():
                 self.state["current_slots"]["agent_request_slots"].pop(slot)
 
@@ -122,7 +119,7 @@ class StateTracker(object):
         for slot in agent_action["inform_slots"].keys():
             # The slot is come from user's goal["request_slots"]
             slot_value = agent_action["inform_slots"][slot]
-            if slot in self.user.goal["goal"]["request_slots"].keys() and slot_value == self.user.goal["disease_tag"]:
+            if slot == 'disease' and slot_value == self.user.goal["disease_tag"]:
                 self.state["current_slots"]["proposed_slots"][slot] = agent_action["inform_slots"][slot]
             elif slot in explicit_implicit_slot_value.keys() and slot_value == explicit_implicit_slot_value[slot]:
                 self.state["current_slots"]["inform_slots"][slot] = agent_action["inform_slots"][slot]

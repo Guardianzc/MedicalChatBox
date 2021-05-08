@@ -34,7 +34,6 @@ class User(object):
     def request(self, disease_id, slots):
         '''
         :return: raise error --- "Exceeded the maximum number of queries."
-                 '3' --- not in the dialoge
                  '2' --- not_sure
                  '1' --- True
                  '0' --- False
@@ -44,18 +43,18 @@ class User(object):
             raise TypeError('Exceeded the maximum number of queries.')
         else:
             if slots in self.goal_slots[disease_id].keys():
-                return self.goal_slots[disease_id][slots]
+                return int(self.goal_slots[disease_id][slots])
             else: 
-                return '3'
+                return '2'
 
     def request_time(self, disease_id):
         return self.request_times[disease_id]
     
 if __name__ == '__main__':
-    user = User('.\\goal_set_simul.p')
+    user = User('.\\Evaluation\\goal_set_simul.p')
     '''
     self.goal_slots['10569463'] = 
-        {'发热': '0', '消化不良': '2', '稀便': '1', '腹泻': '1'}
+        {'发热': '0',  '稀便': '1', '腹泻': '1'}
     '''
     print(user.request_time('10569463'))
     print(user.request('10569463','发热'))

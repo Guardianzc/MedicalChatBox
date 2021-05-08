@@ -89,13 +89,12 @@ class Agent(object):
         current_slots.update(state["current_slots"]["proposed_slots"])
         current_slots_rep = np.zeros(len(self.slot_set.keys()))
         for slot in current_slots.keys():
-            if current_slots[slot] == True:
+            if current_slots[slot] == '1':
                 current_slots_rep[self.slot_set[slot]] = 1.0
-            elif current_slots[slot] == False:
+            elif current_slots[slot] == '0':
                 current_slots_rep[self.slot_set[slot]] = -1.0
-            elif current_slots[slot] == dialogue_configuration.I_DO_NOT_KNOW:
+            else:
                 current_slots_rep[self.slot_set[slot]] = -2.0
-
         # Turn rep.
         turn_rep = np.zeros(self.parameter["max_turn"])
         turn_rep[state["turn"]] = 1.0

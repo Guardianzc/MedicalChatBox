@@ -2,8 +2,8 @@ import pickle
 import argparse
 import json
 parser = argparse.ArgumentParser()
-parser.add_argument("--result_path", dest="result_path", type=str, default='./result.json',help="the path of result .json")
-parser.add_argument("--goal_set_path", dest="goal_set_path", type=str, default=".//goal_set_simul.p", help="the device for tensorflow running on.")
+parser.add_argument("--result_path", dest="result_path", type=str, default='./Evaluation/result.json',help="the path of result .json")
+parser.add_argument("--goal_set_path", dest="goal_set_path", type=str, default="./Evaluation//goal_set_simul.p", help="the device for tensorflow running on.")
 
 args = parser.parse_args()
 parameter = vars(args)

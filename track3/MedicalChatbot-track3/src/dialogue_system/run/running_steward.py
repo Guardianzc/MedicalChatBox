@@ -149,6 +149,10 @@ class RunningSteward(object):
             self.dialogue_manager.initialize(train_mode=test_mode, epoch_index=epoch_index)
             episode_over = False
             ids = goal_set[epoch_index]['consult_id']
+            
+            if ids == '10123471':
+                print(1)
+            
             while episode_over == False:
                 reward, episode_over, dialogue_status, agent_action = self.dialogue_manager.next(save_record=False,train_mode=train_mode,greedy_strategy=0)
                 total_reward += reward
@@ -193,7 +197,7 @@ class RunningSteward(object):
         self.learning_curve[index]["average_reward"]=average_reward
         self.learning_curve[index]["average_turn"] = average_turn
         self.learning_curve[index]["average_wrong_disease"]=average_wrong_disease
-        print("%3d simulation SR %s, ABSR %s, ave reward %s, ave turns %s, ave wrong disease %s, ave F1 %s" % (index,res['success_rate'], res["ab_success_rate"],res['average_reward'], res['average_turn'], res["average_wrong_disease"], res["average_recall"]))
+        print("%3d simulation SR %s, ABSR %s, ave reward %s, ave turns %s, ave wrong disease %s, ave recall %s" % (index,res['success_rate'], res["ab_success_rate"],res['average_reward'], res['average_turn'], res["average_wrong_disease"], res["average_recall"]))
         return res
 
     def warm_start(self, agent, epoch_number):

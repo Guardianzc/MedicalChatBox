@@ -160,7 +160,7 @@ class DQN1(object):
                 self.input = tf.placeholder(dtype=tf.float64, shape=(None, self.input_size), name="input")
                 self.target_value = tf.placeholder(dtype=tf.float64, shape=(None, self.output_size), name="target_value")
                 # Target network
-                self.regularizer = tf.contrib.layers.l2_regularizer(scale=0.1)
+                self.regularizer = tf.contrib.layers.l2_regularizer(scale=0.01)
 
                 with tf.variable_scope(name_or_scope="target_network"):
                     self.target_network_variables = {}
