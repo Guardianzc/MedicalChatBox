@@ -10,55 +10,61 @@ def evaluate_from_decoded(ref_dir,dec_dir,word2id):
     nums = len(os.listdir(ref_dir))
 
     for i in range(nums):
-#         id_ =  str(i).zfill(3)
-        with  open(os.path.join(dec_dir,f_names[i])) as fd: 
-            sh = fd.readlines()[-1]
-            lens.append(len(sh))
+        # id_ =  str(i).zfill(3)
+        try:
+            with  open(os.path.join(dec_dir,f_names[i]),encoding='utf-8') as fd: 
+                sh = fd.readlines()[-1]
+                lens.append(len(sh))
+        
 
-        srs = []
-        #2个参考诊疗报告
-        with open(os.path.join(ref_dir,f_names[i]),encoding='utf-8') as fr: 
-            sr = fr.readlines()
-            sr_0 = sr[:6]
-            sr_1 = sr[6:]
-            
-            tmp_data = [x[:-1] for x in sr_0]
-            sr_0 = ''.join(tmp_data)
-            sr_0 = sr_0+'。'
-            srs.append(sr_0)
-            
-            tmp_data = [x[:-1] for x in sr_1]
-            sr_1 = ''.join(tmp_data)
-            sr_1 = sr_1+'。'
-            srs.append(sr_1)
+            srs = []
+            #2个参考诊疗报告
+            with open(os.path.join(ref_dir,f_names[i]),encoding='utf-8') as fr: 
+                sr = fr.readlines()
+                sr_0 = sr[:6]
+                sr_1 = sr[6:]
+                
+                tmp_data = [x[:-1] for x in sr_0]
+                sr_0 = ''.join(tmp_data)
+                sr_0 = sr_0+'。'
+                srs.append(sr_0)
+                
+                tmp_data = [x[:-1] for x in sr_1]
+                sr_1 = ''.join(tmp_data)
+                sr_1 = sr_1+'。'
+                srs.append(sr_1)
 
-            # word2id
-            str_srs = []
-            for sr in srs:
-                str_r = ''
-                sr_split = sr.split(' ')
-                for w in sr_split:
+                # word2id
+                str_srs = []
+                for sr in srs:
+                    str_r = ''
+                    sr_split = sr.split(' ')
+                    for w in sr_split:
+                        if w in word2id:
+                            str_r += str(word2id[w])
+                        else:
+                            str_r += '-1'
+                        str_r += ' '
+
+                    str_srs.append(str_r)
+
+                #对生成文本进行word2id的转换
+                str_h = ''
+                sh_split = sh.split(' ')
+                for w in sh_split:
                     if w in word2id:
-                        str_r += str(word2id[w])
-                    else:
-                        str_r += '-1'
-                    str_r += ' '
+                        str_h += str(word2id[w])
+                    else: # OOV
+    #                     print(w)
+                        str_h += '-1'
+                    str_h += ' '
 
-                str_srs.append(str_r)
-
-            #对生成文本进行word2id的转换
-            str_h = ''
-            sh_split = sh.split(' ')
-            for w in sh_split:
-                if w in word2id:
-                    str_h += str(word2id[w])
-                else: # OOV
-#                     print(w)
-                    str_h += '-1'
-                str_h += ' '
-
-        score0 = compute_scores(str_h,str_srs)
-        scores.append(score0)
+            score0 = compute_scores(str_h,str_srs)
+            scores.append(score0)
+            print(score0)
+        except Exception as e:
+            print(e)
+            scores.append([0.0,0.0,0.0])
 
     df_scores = DataFrame(scores)
     mean_scores = [round(df_scores[i].mean(),4) for i in range(3)]
@@ -82,7 +88,7 @@ def compute_scores(sh,srs):
 
 
 if __name__ == '__main__':   
-    with open('./vocab') as f:
+    with open('./vocab',encoding='utf-8') as f:
         word2id = {}
         while True:
             l = f.readline()
