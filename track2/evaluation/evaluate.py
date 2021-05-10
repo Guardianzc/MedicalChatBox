@@ -6,11 +6,11 @@ from sumeval.metrics.rouge import RougeCalculator
 def evaluate_from_decoded(ref_dir,dec_dir,word2id):
     scores = []
     lens = []
-    f_names = os.listdir(dec_dir)
-    nums = len(os.listdir(dec_dir))
+    f_names = os.listdir(ref_dir)
+    nums = len(os.listdir(ref_dir))
 
     for i in range(nums):
-        id_ =  str(i).zfill(3)
+#         id_ =  str(i).zfill(3)
         with  open(os.path.join(dec_dir,f_names[i])) as fd: 
             sh = fd.readlines()[-1]
             lens.append(len(sh))
