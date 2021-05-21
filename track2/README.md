@@ -54,7 +54,8 @@ python decode.py --model_filename=<model_dir> --decode_filename=medi_finished_di
 python decode.py --model_filename=<model_dir>
 ```
 
-生成用于测试的文件。将“生成摘要_test”文件夹压缩打包，作为提交评测的文件。文件夹log中存有一个模型的样例。
+生成用于测试的文件。将“生成摘要_test”文件夹上传，作为提交评测的文件。具体提交文件的命名及格式要求请参阅官网的结果提交示例。
+
 
 # pointer_generator模型
 
