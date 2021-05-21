@@ -76,7 +76,7 @@ python decode.py --model_filename=<model_dir> --decode_filename=medi_finished_di
 ```python
 python decode.py --model_filename=<model_dir> --pointer_gen --is_coverage
 ```
-生成用于测试的文件。将“生成摘要_test”文件夹压缩打包，作为提交评测的文件。
+生成用于测试的文件。将“生成摘要_test”文件夹上传，作为提交评测的文件。具体提交文件的命名及格式要求请参阅官网的结果提交示例。
 
 
 # 第一阶段评测说明
