@@ -58,7 +58,7 @@ python ./src/dialogue_system/run/run.py --train_mode 0 --saved_model=<model_dir>
 - `run.sh`：执行预测脚本
 
   ```shell
-  #!/bin/sh
+  #!/bin/bash
 
   source ~/env/scv0xxx-3/bin/activate # 指定启用环境, 修改xxx即可
 
