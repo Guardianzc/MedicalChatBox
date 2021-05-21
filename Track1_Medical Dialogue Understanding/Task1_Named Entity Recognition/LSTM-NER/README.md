@@ -47,7 +47,7 @@ python train.py --test_input_file {test_file_path} --test_output_file {output_fi
 python eval_track1_task2.py {gold_data_path} {pred_data_path}
 ```
 
-`gold_data_path`是具有真实标签的测试集的路径，`pred_data_path`是`submission_track1_task1.json`的路径。将`submission_track1_task1.json`提交后系统将会自动评价。
+`gold_data_path`是具有真实标签的测试集的路径，`pred_data_path`是`submission_track1_task1.json`的路径。具体提交文件的命名及格式要求请参阅官网的结果提交示例。
 
 
 ## Experimental details
