@@ -77,6 +77,11 @@ gold_keys = [
     '10621320', '10511098', '10541090', '10329128', '10076396', '10841097', '10679915', '10256397', '10870274']
 
 
+def test_track(track):
+    assert '1' in track or '2' in track or '3' in track, \
+        'track参数<{}>错误！需要至少测试一个赛道！请检查track参数！'.format(','.join(track))
+
+
 def track1(path):
     assert os.path.exists(path), '文件<{}>不存在！'.format(path)
     with open(path, 'r', encoding='utf-8') as f:
